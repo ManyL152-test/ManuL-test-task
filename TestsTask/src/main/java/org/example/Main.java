@@ -1,17 +1,11 @@
 package org.example;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите число: ");
-        int number = scanner.nextInt();
-
-        if (number % 2 == 0) {
-            System.out.println("Число " + number + " чётное.");
-        } else {
-            System.out.println("Число " + number + " нечётное.");
+        for (int i = 1; i <= 10; i++) {
+            for (int j = 1; j <= 10; j++) {
+                System.out.printf("%d x %d = %2d%n", i, j, i * j);
+            }
         }
     }
 }
