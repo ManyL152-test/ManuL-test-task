@@ -1,16 +1,17 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        int a = 1;
-        boolean b = true;
-        byte c = 3;
-        short d = 4;
-        long e = 5;
-        double f = 6;
-        float g = 7;
-        char o = 6553;
-        System.out.println("a = " + a + " b = " + b + " c = "
-                + c + " d = " + d + " e = " + e + " f = " + f + " g = " + g + " o = " + o);
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите число: ");
+        int number = scanner.nextInt();
+
+        if (number % 2 == 0) {
+            System.out.println("Число " + number + " чётное.");
+        } else {
+            System.out.println("Число " + number + " нечётное.");
+        }
     }
 }
