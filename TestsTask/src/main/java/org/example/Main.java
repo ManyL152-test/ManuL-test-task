@@ -1,11 +1,21 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
+
     public static void main(String[] args) {
-        for (int i = 1; i <= 10; i++) {
-            for (int j = 1; j <= 10; j++) {
-                System.out.printf("%d x %d = %2d%n", i, j, i * j);
-            }
-        }
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите первое число:");
+        int num1 = in.nextInt();
+        System.out.println("Введите второе число:");
+        int num2 = in.nextInt();
+        int res = num1 + num2;
+        System.out.println("Результат = " + res);
+    }
+    
+    public static int Sum(int a, int b) {
+        return a + b;
     }
 }
