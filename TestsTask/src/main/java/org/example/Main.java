@@ -14,7 +14,7 @@ public class Main {
         int res = num1 + num2;
         System.out.println("Результат = " + res);
     }
-    
+
     public static int Sum(int a, int b) {
         return a + b;
     }
