@@ -1,0 +1,6 @@
+{
+    "timestamp": "2024-12-16T14:31:12.029+00:00",
+    "status": 405,
+    "error": "Method Not Allowed",
+    "path": "/"
+}
