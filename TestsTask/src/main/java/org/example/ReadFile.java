@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class ReadFile {
     public static void main(String[] args) throws IOException {
         // Создаем объект класса File для работы с файлом
-        File file = new File("test 14.txt");
+        File file = new File("test 16.txt");
 
         if (file.exists()) {
             Scanner scanner = new Scanner(file);
