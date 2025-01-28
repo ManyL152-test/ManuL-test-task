@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -21,19 +22,23 @@ public class FormFilling {
 
         // Найдите поля формы
         // Введите имя пользователя
-        WebElement UserName = driver.findElement(By.name("name"));
-        UserName.sendKeys("Георгий");
+        WebElement userName = driver.findElement(By.name("name"));
+        userName.sendKeys("Георгий");
 
         // Введите почту пользователя
-        WebElement UserEmail = driver.findElement(By.name("email"));
-        UserEmail.sendKeys("malina.tester@gmail.com");
+        WebElement userEmail = driver.findElement(By.name("email"));
+        userEmail.sendKeys("malina.tester@gmail.com");
 
-        // Ввод номера телефона, хуй знает как этому говно коду объяснить хули тут не так (ожидание нахуй тут не надо)
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-        WebElement phoneInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.name("phone")));
+        // Ввод номера телефона
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-        WebElement UserPhoneNum = driver.findElement(By.name("phone"));
-        UserPhoneNum.sendKeys("9999999999");
+        // Ожидаем доступность поля
+        WebElement phoneInput = wait.until(ExpectedConditions.elementToBeClickable(By.name("phone")));
+
+        // Очистка и ввод телефона с учетом маски
+        Actions actions = new Actions(driver);
+        phoneInput.click();
+        actions.sendKeys("9999999999").perform();
 
         // Введите пароль
         WebElement passwordInput = driver.findElement(By.id("password"));
@@ -44,6 +49,9 @@ public class FormFilling {
         confirmPasswordInput.sendKeys("Password152");
 
         // Нажмите кнопку регистрации
-        // внести данные, я хуй знает как...
+        WebElement registrationButton = wait.until(
+                ExpectedConditions.elementToBeClickable(By.className("register_button"))
+        );
+        registrationButton.click();
     }
 }
