@@ -11,7 +11,7 @@ import java.time.Duration;
 public class FormFilling {
     public static void main(String[] args) {
         // Замените 'url' на URL вашей формы
-        String url = "https://airsoftsports.ru/auth/register/";
+        String url = "https://airsoftsports.ru";
 
         // Инициализируйте драйвер Chrome
         System.setProperty("webdriver.chrome.driver", "D:\\chromedriver-win32\\chromedriver.exe");
@@ -21,6 +21,11 @@ public class FormFilling {
         driver.get(url);
 
         // Найдите поля формы
+        // Ожидаем переход по ссылке
+        WebDriverWait waitReg = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement regInput = waitReg.until(ExpectedConditions.elementToBeClickable(By.className("register-icon")));
+        regInput.click();
+        
         // Введите имя пользователя
         WebElement userName = driver.findElement(By.name("name"));
         userName.sendKeys("Георгий");
@@ -29,10 +34,10 @@ public class FormFilling {
         WebElement userEmail = driver.findElement(By.name("email"));
         userEmail.sendKeys("malina.tester@gmail.com");
 
-        // Ввод номера телефона
+        // Ожидаем доступность поля
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-        // Ожидаем доступность поля
+        // Ввод номера телефона
         WebElement phoneInput = wait.until(ExpectedConditions.elementToBeClickable(By.name("phone")));
 
         // Очистка и ввод телефона с учетом маски
